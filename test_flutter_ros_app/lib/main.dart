@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:roslib/roslib.dart';
 import 'package:testflutterrosapp/Routes/transition_route_observer.dart';
+import 'package:testflutterrosapp/navigation_page.dart';
 import 'Widgets/arrow_control.dart';
 import 'arrow_teleop.dart';
 import 'Widgets/camera.dart';
@@ -22,11 +23,12 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Turtlebot Controller',
-      home: LoginPage(),
+      home: NavigationPage(),
       navigatorObservers: [TransitionRouteObserver()],
       routes: {
         LoginPage.routeName: (context) => LoginPage(),
         ArrowTeleop.routeName: (context) => ArrowTeleop(),
+        NavigationPage.routeName: (context) => NavigationPage(),
 
 
 

@@ -78,7 +78,7 @@ class _ArrowControllerState extends State<ArrowController> {
         topic.msg.angular.z = move.rotz;
       });
       // wait a bit
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(Duration(milliseconds: 100));
     }
     setState(() {
       topic.msg.linear.x = 0;
@@ -91,7 +91,8 @@ class _ArrowControllerState extends State<ArrowController> {
   Widget build(BuildContext context) {
 
     return Container(
-      decoration: kBoxDecorationStyle,
+      decoration: kBoxDecorationArrowControllerStyle,
+      width: 350,
       child: Column(
         children: [
           /*RaisedButton(
@@ -144,7 +145,7 @@ class _ArrowControllerState extends State<ArrowController> {
                   ),
                 ),
               ),
-              padding(),
+              SizedBox(width: 68,),
               Container(
                 width: 70,
                 child: Listener(
@@ -196,7 +197,7 @@ class _ArrowControllerState extends State<ArrowController> {
 
 }
 Padding padding() {
-  return new Padding(padding: EdgeInsets.only(right: 70.7));
+  return new Padding(padding: EdgeInsets.only(left: 71));
 
 }
 

@@ -165,6 +165,7 @@ class SubmitButton extends StatelessWidget {
               context,
               ArrowTeleop.routeName,
               arguments: RobotAndDeviceIP(robotIP: this.robotIP, deviceIP: this.deviceIP));
+          print("Ip of the device is ${this.deviceIP}");
         },
         padding: EdgeInsets.all(15),
         shape: RoundedRectangleBorder(

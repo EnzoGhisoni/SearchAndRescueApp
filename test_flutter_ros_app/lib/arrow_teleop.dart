@@ -42,25 +42,48 @@ class _ArrowTeleopState extends State<ArrowTeleop> with TransitionRouteAware{
       appBar: AppBar(
         title: Text('TurtleBot Controller'),
       ),
-      body: Column(
-        children: <Widget>[
+      body: Stack(
+        children:
+        [
           Container(
-            height: 350,
-            width: 350,
-            child: MyWebView(
-              title: "TurtleBotView",
-              selectedUrl:
-              //'http://192.168.1.64:8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
-              'http://100.88.32.70:8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
-              //'http://192.168.43.145:8080/stream?topic=/people_detect/image&type=mjpeg&quality=100&width=640&height=400&default_transport=compressed',
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF73AEF5),
+                    Color(0xFF61A4F1),
+                    Color(0xFF478DE0),
+                    Color(0xFF398AE5),
+                  ],
+                  stops: [0.1, 0.4, 0.7, 0.9],
+                )
+            ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 350,
+                  width: 350,
+                  child: MyWebView(
+                    title: "TurtleBotView",
+                    selectedUrl:
+                    //'http://192.168.1.64:8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
+                    'http://100.88.32.70:8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
+                    //'http://192.168.43.145:8080/stream?topic=/people_detect/image&type=mjpeg&quality=100&width=640&height=400&default_transport=compressed',
+                  ),
+                ),
+                SizedBox(height: 30.0),
+                ArrowController(
+                  robotIP: ip.robotIP,
+                  deviceIP: ip.deviceIP,
+                ),
+              ],
             ),
           ),
+        ]
 
-          ArrowController(
-            robotIP: ip.robotIP,
-            deviceIP: ip.deviceIP,
-          ),
-        ],
       ),
     );
   }
