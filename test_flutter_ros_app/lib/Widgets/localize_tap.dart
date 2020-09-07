@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ros_nodes/messages/geometry_msgs/Twist.dart';
+import 'package:ros_nodes/ros_nodes.dart';
 
 class LocalizeTap extends StatefulWidget {
   @override
@@ -15,6 +17,28 @@ class LocalizeTapState extends State<LocalizeTap> {
   double goal_posy = 0;
   double scaleX = 20;
   double scaleY = 20;
+  static var config = RosConfig(
+    'ros_arrow_key_controller',
+    'http://100.88.32.70:11311/',
+    '100.88.32.96',
+    24125,
+  );
+  var client = RosClient(config);
+  // For the turtlebot3
+  //var topic = RosTopic('cmd_vel', GeometryMsgsTwist());
+
+  // For the turtlebot2
+  var topic = RosTopic('instructions', GeometryMsgsTwist());
+  void updateTopic(pose2D) async {
+    await client.unregister(topic);
+
+    var publisher = await client.register(topic,
+        publishInterval: Duration(milliseconds: 100));
+    setState(() {
+      topic.msg.linear.x = pose2D.x;
+      topic.msg.linear.y = pose2D.y;
+    });
+  }
   void onTapDown(BuildContext context, TapDownDetails details) {
     print('${details.globalPosition}');
     final RenderBox box = context.findRenderObject();
@@ -25,6 +49,7 @@ class LocalizeTapState extends State<LocalizeTap> {
       goal_posx = (posx/scaleX) -10;
       goal_posy = (posy/scaleY) -10;
     });
+    updateTopic(Pose2D(x: goal_posx, y: goal_posy));
   }
 
   @override
@@ -48,4 +73,10 @@ class LocalizeTapState extends State<LocalizeTap> {
       ),
     );
   }
+}
+
+class Pose2D {
+  Pose2D({this.x, this.y});
+  double x;
+  double y;
 }

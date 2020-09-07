@@ -30,7 +30,7 @@ class ShapePainter extends CustomPainter {
       ..color = Color(0xff63aa65)
       ..strokeWidth = 10;
     //list of points
-    var points = [Offset(50, 50)];
+    var points = [Offset(0, 0)];
     //draw points on canvas
     canvas.drawPoints(PointMode.points, points, paint1);
   }
