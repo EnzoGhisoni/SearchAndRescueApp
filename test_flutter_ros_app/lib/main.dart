@@ -23,7 +23,7 @@ class ExampleApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Turtlebot Controller',
-      home: NavigationPage(),
+      home: LoginPage(),
       navigatorObservers: [TransitionRouteObserver()],
       routes: {
         LoginPage.routeName: (context) => LoginPage(),

@@ -46,8 +46,8 @@ class LocalizeTapState extends State<LocalizeTap> {
     setState(() {
       posx = localOffset.dx;
       posy = localOffset.dy;
-      goal_posx = (posx/scaleX) -10;
-      goal_posy = (posy/scaleY) -10;
+      goal_posx = (-posy/scaleX) +10;
+      goal_posy = (-posx/scaleY) +10;
     });
     updateTopic(Pose2D(x: goal_posx, y: goal_posy));
   }

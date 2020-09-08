@@ -48,7 +48,7 @@ class _NavigationMapState extends State<NavigationMap> {
           width: 384,
           child: Image(image: AssetImage("assets/images/tb3_house_map.jpg"),),
         ),
-        WriteLocalizationOnMap(),
+        //WriteLocalizationOnMap(),
         LocalizeTap(),
 
       ],

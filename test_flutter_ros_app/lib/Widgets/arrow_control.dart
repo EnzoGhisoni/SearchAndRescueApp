@@ -44,10 +44,10 @@ class _ArrowControllerState extends State<ArrowController> {
   );
   var client = RosClient(config);
   // For the turtlebot3
-  //var topic = RosTopic('cmd_vel', GeometryMsgsTwist());
+  var topic = RosTopic('cmd_vel', GeometryMsgsTwist());
 
   // For the turtlebot2
-  var topic = RosTopic('mobile_base/commands/velocity', GeometryMsgsTwist());
+  //var topic = RosTopic('mobile_base/commands/velocity', GeometryMsgsTwist());
   void onClickMove(move) async {
     await client.unregister(topic);
 
@@ -112,7 +112,12 @@ class _ArrowControllerState extends State<ArrowController> {
                 _buttonPressed = false;
               },
               child: Container(
-                decoration: BoxDecoration(color: Colors.white, border: Border.all()),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(),
+                    borderRadius: new BorderRadius.all(
+                        const Radius.circular(20.0)
+                    )),
                 padding: EdgeInsets.all(16.0),
                 child: Text('Up', textAlign: TextAlign.center,
                 ),
@@ -130,6 +135,7 @@ class _ArrowControllerState extends State<ArrowController> {
               ),*/
               Container(
                 width: 70,
+
                 child: Listener(
                   onPointerDown: (details) {
                     _buttonPressed = true;
@@ -139,7 +145,12 @@ class _ArrowControllerState extends State<ArrowController> {
                     _buttonPressed = false;
                   },
                   child: Container(
-                    decoration: BoxDecoration(color: Colors.white, border: Border.all()),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(),
+                        borderRadius: new BorderRadius.all(
+                            const Radius.circular(20.0)
+                  )),
                     padding: EdgeInsets.all(16.0),
                     child: Text('Left', textAlign: TextAlign.center,),
                   ),
@@ -157,7 +168,12 @@ class _ArrowControllerState extends State<ArrowController> {
                     _buttonPressed = false;
                   },
                   child: Container(
-                    decoration: BoxDecoration(color: Colors.white, border: Border.all()),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(),
+                        borderRadius: new BorderRadius.all(
+                            const Radius.circular(20.0)
+                        )),
                     padding: EdgeInsets.all(16.0),
                     child: Text('Right', textAlign: TextAlign.center,),
                   ),
@@ -183,7 +199,13 @@ class _ArrowControllerState extends State<ArrowController> {
                 _buttonPressed = false;
               },
               child: Container(
-                decoration: BoxDecoration(color: Colors.white, border: Border.all()),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(),
+                  borderRadius: new BorderRadius.all(
+                     const Radius.circular(20.0)
+                  ),
+                ),
                 padding: EdgeInsets.all(16.0),
                 child: Text('Down', textAlign: TextAlign.center,),
               ),

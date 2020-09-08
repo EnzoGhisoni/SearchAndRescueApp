@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:get_ip/get_ip.dart';
 import 'package:testflutterrosapp/constants.dart';
 import 'package:testflutterrosapp/Widgets/get_robot_parameter_textfield.dart';
+import 'package:testflutterrosapp/navigation_page.dart';
 import 'Routes/transition_route_observer.dart';
 import 'arrow_teleop.dart';
 
@@ -130,7 +131,14 @@ class _LoginPageState extends State<LoginPage> with TransitionRouteAware{
                   HowFindRobotIP(),
                   checkBoxRobotInfo(),
                   SizedBox(height: 30.0),
-                  SubmitButton(),
+                  SubmitButton(
+                      pageName: "Arrow Teleoperation",
+                      routeName: ArrowTeleop.routeName
+                  ),
+                  SubmitButton(
+                      pageName: "Navigation Map",
+                      routeName: NavigationPage.routeName
+                  ),
                 //Text("Ip value is $_ip")
                 ],
               ),
@@ -147,9 +155,13 @@ class _LoginPageState extends State<LoginPage> with TransitionRouteAware{
 class SubmitButton extends StatelessWidget {
   final String robotIP;
   final String deviceIP;
+  final String routeName;
+  final String pageName;
   const SubmitButton({
     this.robotIP,
     this.deviceIP,
+    this.routeName,
+    this.pageName,
     Key key,
   }) : super(key: key);
 
@@ -163,7 +175,7 @@ class SubmitButton extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(
               context,
-              ArrowTeleop.routeName,
+              this.routeName,
               arguments: RobotAndDeviceIP(robotIP: this.robotIP, deviceIP: this.deviceIP));
           print("Ip of the device is ${this.deviceIP}");
         },
@@ -172,7 +184,7 @@ class SubmitButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         color: Colors.white,
-        child: Text("Submit",
+        child: Text(this.pageName,
             style: TextStyle(
               color: Color(0xFF527DAA),
               letterSpacing: 1.5,
