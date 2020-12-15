@@ -15,10 +15,10 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> with TransitionRouteAware{
   Ros ros;
   Topic chatter;
-
+  static String robotIP = "100.88.20.14";
   @override
   void initState() {
-    ros = Ros(url: 'ws://100.88.32.70:9090');
+    ros = Ros(url: 'ws://'+ robotIP +':9090');
     chatter = Topic(
         ros: ros, name: '/chatter', type: "std_msgs/String", reconnectOnClose: true, queueLength: 10, queueSize: 10);
     super.initState();

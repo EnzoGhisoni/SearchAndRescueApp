@@ -6,6 +6,7 @@ import 'Widgets/arrow_control.dart';
 import 'arrow_teleop.dart';
 import 'Widgets/camera.dart';
 import 'login_page.dart';
+import 'map_real_time.dart';
 
 /*
 Launch the terminal commands
@@ -29,8 +30,7 @@ class ExampleApp extends StatelessWidget {
         LoginPage.routeName: (context) => LoginPage(),
         ArrowTeleop.routeName: (context) => ArrowTeleop(),
         NavigationPage.routeName: (context) => NavigationPage(),
-
-
+        MapRealTime.routeName: (context) => MapRealTime(),
 
       },
     );

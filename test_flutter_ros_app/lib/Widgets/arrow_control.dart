@@ -3,12 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ros_nodes/ros_nodes.dart';
 import 'package:ros_nodes/messages/geometry_msgs/Twist.dart';
-import 'package:get_ip/get_ip.dart';
-import 'package:flutter/services.dart';
-import 'dart:math';
-
 import 'package:testflutterrosapp/constants.dart';
-import 'package:testflutterrosapp/login_page.dart';
 
 class ArrowController extends StatefulWidget {
   final String robotIP;
@@ -16,7 +11,7 @@ class ArrowController extends StatefulWidget {
   const ArrowController({
     this.robotIP,
     this.deviceIP,
-
+    
     Key key,}) : super(key: key);
 
   @override
@@ -35,11 +30,14 @@ class _ArrowControllerState extends State<ArrowController> {
     super.initState();
   }
 
-
+  //static String robotIP = "100.88.20.14";
+  static robotIP() => robotIP_global;
+  static deviceIP() => deviceIP_global;
   static var config = RosConfig(
     'ros_arrow_key_controller',
-    'http://100.88.32.70:11311/',
-    '100.88.32.96',
+    'http://'+ robotIP() +':11311/',
+    //'100.88.20.135',
+    deviceIP(),
     24125,
   );
   var client = RosClient(config);
@@ -86,7 +84,6 @@ class _ArrowControllerState extends State<ArrowController> {
     });
     _loopActive = false;
   }
-
   @override
   Widget build(BuildContext context) {
 

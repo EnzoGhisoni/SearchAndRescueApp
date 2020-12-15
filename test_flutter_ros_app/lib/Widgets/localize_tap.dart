@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ros_nodes/messages/geometry_msgs/Twist.dart';
 import 'package:ros_nodes/ros_nodes.dart';
-
+import 'package:testflutterrosapp/constants.dart';
 class LocalizeTap extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-
 
     return new LocalizeTapState();
   }
@@ -17,15 +16,17 @@ class LocalizeTapState extends State<LocalizeTap> {
   double goal_posy = 0;
   double scaleX = 20;
   double scaleY = 20;
+  //static String robotIP = "100.88.20.14";
+  static robotIP() => robotIP_global;
+  static deviceIP() => deviceIP_global;
   static var config = RosConfig(
-    'ros_arrow_key_controller',
-    'http://100.88.32.70:11311/',
-    '100.88.32.96',
+    'ros_tap_map_controller',
+    'http://' + robotIP() + ':11311/',
+    //'100.88.20.135',
+    deviceIP(),
     24125,
   );
   var client = RosClient(config);
-  // For the turtlebot3
-  //var topic = RosTopic('cmd_vel', GeometryMsgsTwist());
 
   // For the turtlebot2
   var topic = RosTopic('instructions', GeometryMsgsTwist());
@@ -38,8 +39,9 @@ class LocalizeTapState extends State<LocalizeTap> {
       topic.msg.linear.x = pose2D.x;
       topic.msg.linear.y = pose2D.y;
     });
+    print("xgoal: $pose2D.x and ygoal: $pose2D.y");
   }
-  void onTapDown(BuildContext context, TapDownDetails details) {
+  void onTapDown(BuildContext context, TapDownDetails details) async {
     print('${details.globalPosition}');
     final RenderBox box = context.findRenderObject();
     final Offset localOffset = box.globalToLocal(details.globalPosition);
@@ -48,6 +50,7 @@ class LocalizeTapState extends State<LocalizeTap> {
       posy = localOffset.dy;
       goal_posx = (-posy/scaleX) +10;
       goal_posy = (-posx/scaleY) +10;
+
     });
     updateTopic(Pose2D(x: goal_posx, y: goal_posy));
   }

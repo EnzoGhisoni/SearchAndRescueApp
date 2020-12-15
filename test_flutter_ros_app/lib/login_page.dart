@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:get_ip/get_ip.dart';
 import 'package:testflutterrosapp/constants.dart';
 import 'package:testflutterrosapp/Widgets/get_robot_parameter_textfield.dart';
+import 'package:testflutterrosapp/map_real_time.dart';
 import 'package:testflutterrosapp/navigation_page.dart';
 import 'Routes/transition_route_observer.dart';
 import 'arrow_teleop.dart';
@@ -138,6 +139,10 @@ class _LoginPageState extends State<LoginPage> with TransitionRouteAware{
                   SubmitButton(
                       pageName: "Navigation Map",
                       routeName: NavigationPage.routeName
+                  ),
+                  SubmitButton(
+                      pageName: "Map Observation",
+                      routeName: MapRealTime.routeName
                   ),
                 //Text("Ip value is $_ip")
                 ],

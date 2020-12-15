@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+//final String robotIP_global = "100.88.20.14";
+//final String deviceIP_global = "100.88.20.135";
+final String robotIP_global = "137.195.117.86";
+final String deviceIP_global = "137.195.110.248";
 final kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',
