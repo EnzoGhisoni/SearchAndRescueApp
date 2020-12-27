@@ -36,13 +36,12 @@ class _ArrowTeleopState extends State<ArrowTeleop> with TransitionRouteAware{
     setState(() {});
   }
 
-
   @override
   Widget build(BuildContext context) {
     RobotAndDeviceIP ip = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text('TurtleBot Controller'),
+        title: Text('Robot Teleoperation'),
       ),
       body: Stack(
         children:
@@ -73,7 +72,8 @@ class _ArrowTeleopState extends State<ArrowTeleop> with TransitionRouteAware{
                     selectedUrl:
                     //'http://192.168.1.64:8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
                     //'http:/'+ robotIP() +':8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
-                    'http:/'+ robotIP() +':8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
+                    //'http:/'+ robotIP() +':8080/stream?topic=/camera/rgb/image_raw&type=mjpeg&quality=80&width=350&height=350',
+                    'http:/'+ robotIP() +':8080/stream?topic=/image_rectangle&type=mjpeg&quality=80&width=350&height=350',
                     //'http:/'+ robotIPX +':8080/stream?topic=/image_topic_modified&type=mjpeg&quality=80&width=350&height=350',
                     //'http://192.168.43.145:8080/stream?topic=/people_detect/image&type=mjpeg&quality=100&width=640&height=400&default_transport=compressed',
                   ),

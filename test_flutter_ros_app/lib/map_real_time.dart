@@ -43,7 +43,7 @@ class _MapRealTimeState extends State<MapRealTime> with TransitionRouteAware{
     return Scaffold(
 
       appBar: AppBar(
-        title: Text('TurtleBot Vizualization'),
+        title: Text('Map Observation'),
       ),
       body: Stack(
           children:

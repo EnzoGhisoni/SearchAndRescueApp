@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> with TransitionRouteAware{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Init robot connexion",
+                  Text("Save and Rescue",
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
@@ -133,11 +133,11 @@ class _LoginPageState extends State<LoginPage> with TransitionRouteAware{
                   checkBoxRobotInfo(),
                   SizedBox(height: 30.0),
                   SubmitButton(
-                      pageName: "Arrow Teleoperation",
+                      pageName: "Robot Teleoperation",
                       routeName: ArrowTeleop.routeName
                   ),
                   SubmitButton(
-                      pageName: "Navigation Map",
+                      pageName: "Navigation Control",
                       routeName: NavigationPage.routeName
                   ),
                   SubmitButton(

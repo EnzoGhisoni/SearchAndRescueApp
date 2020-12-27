@@ -6,6 +6,7 @@ import 'Widgets/camera.dart';
 import 'package:testflutterrosapp/login_page.dart';
 
 import 'Widgets/navigation_map.dart';
+import 'constants.dart';
 class NavigationPage extends StatefulWidget {
   NavigationPage({Key key}) : super(key: key);
   static const routeName = '/navigation';
@@ -15,10 +16,10 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> with TransitionRouteAware{
   Ros ros;
   Topic chatter;
-  static String robotIP = "100.88.20.14";
+  static robotIP() => robotIP_global;
   @override
   void initState() {
-    ros = Ros(url: 'ws://'+ robotIP +':9090');
+    ros = Ros(url: 'ws://'+ robotIP() +':9090');
     chatter = Topic(
         ros: ros, name: '/chatter', type: "std_msgs/String", reconnectOnClose: true, queueLength: 10, queueSize: 10);
     super.initState();
@@ -42,7 +43,7 @@ class _NavigationPageState extends State<NavigationPage> with TransitionRouteAwa
     RobotAndDeviceIP ip = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text('TurtleBot Navigation'),
+        title: Text('Navigation Control'),
       ),
       body: Stack(
           children:
@@ -65,7 +66,7 @@ class _NavigationPageState extends State<NavigationPage> with TransitionRouteAwa
               ),
               child: Column(
                 children: <Widget>[
-                  NavigationMap(),
+                  NavigationMap(robotIP: robotIP(),),
                 ],
               ),
             ),

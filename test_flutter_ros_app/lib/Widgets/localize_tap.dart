@@ -58,7 +58,9 @@ class LocalizeTapState extends State<LocalizeTap> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: 384,
+      //height: 384,
+      //width: 384,
+      height: 284,
       width: 384,
       color: Colors.white.withOpacity(0.1),
       child: GestureDetector(
@@ -68,9 +70,10 @@ class LocalizeTapState extends State<LocalizeTap> {
           // way to do it.
           new Container(color: Colors.white.withOpacity(0.1)),
           new Positioned(
-            child: new Text('x = $goal_posx and y = $goal_posy'),
-            left: posx,
-            top: posy,
+            //child: new Text('($goal_posx, $goal_posy)'),
+            child: new Text('x (${goal_posx.toStringAsFixed(2)}, ${goal_posy.toStringAsFixed(2)})'),
+            left: posx - 38,
+            top: posy - 38,
           )
         ]),
       ),
