@@ -41,6 +41,7 @@ class _MapRealTimeState extends State<MapRealTime> with TransitionRouteAware{
   Widget build(BuildContext context) {
     RobotAndDeviceIP ip = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+
       appBar: AppBar(
         title: Text('TurtleBot Vizualization'),
       ),
@@ -66,7 +67,7 @@ class _MapRealTimeState extends State<MapRealTime> with TransitionRouteAware{
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: 300,
+                    height: 250,
                     width: 350,
                     child: MyWebView(
                       title: "TurtleBotView",
@@ -80,7 +81,7 @@ class _MapRealTimeState extends State<MapRealTime> with TransitionRouteAware{
                   ),
                   SizedBox(height: 30.0),
                   Container(
-                    height: 300,
+                    height: 250,
                     width: 350,
                     child: MyWebView(
                       title: "TurtleBotMap",
